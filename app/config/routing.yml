@@ -3,6 +3,7 @@ blogger_blog:
     type:     annotation
     prefix:   /
 
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
+#disable default routing
+#app:
+#    resource: "@AppBundle/Controller/"
+#    type:     annotation
