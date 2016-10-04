@@ -9,4 +9,22 @@
     </header>
 
     <p>Want to contact symblog?</p>
+
+    {{ form_start(enquiry_form, {'attr' : {'class': 'blogger'}}) }}
+
+    <!-- method 1 -->
+        {#{ form_widget(enquiry_form) }#}
+
+    <!-- method 2 -->
+    {{ form_errors(enquiry_form) }}
+
+    {{ form_row(enquiry_form.name) }}
+    {{ form_row(enquiry_form.email) }}
+    {{ form_row(enquiry_form.subject) }}
+    {{ form_row(enquiry_form.body) }}
+
+    {{ form_rest(enquiry_form) }}
+
+    <input type="submit" />
+    {{ form_end(enquiry_form) }}
 {% endblock %}
