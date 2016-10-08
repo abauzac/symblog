@@ -2,8 +2,8 @@
 
 namespace Blogger\BlogBundle\Controller;
 
-use Blogger\BlogBundle\Entity\Enquiry;
 use Blogger\BlogBundle\Form\EnquiryType;
+use Blogger\BlogBundle\ViewModels\EnquiryViewModel;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -39,8 +39,8 @@ class PageController extends Controller
      */
     public function contactAction(Request $request)
     {
-        $enquiry = new Enquiry();
-        $form = $this->createForm(EnquiryType::class,$enquiry);
+        $enquiryViewModel = new EnquiryViewModel();
+        $form = $this->createForm(EnquiryType::class,$enquiryViewModel);
 
         $form->handleRequest($request);
         if($form->isValid()){

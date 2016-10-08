@@ -1,15 +1,32 @@
 <?php
 
-namespace Blogger\BlogBundle\Entity;
+namespace Blogger\BlogBundle\ViewModels;
 
-class Enquiry
+use Symfony\Component\Validator\Constraints as Assert;
+
+class EnquiryViewModel
 {
+    /**
+     * @var
+     * @Assert\NotBlank()
+     */
     protected $name;
 
+    /**
+     * @var
+     * @Assert\Email(message="We want a real email !")
+     */
     protected $email;
 
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Length(max = 50)
+     */
     protected $subject;
 
+    /**
+     * @Assert\Length(min = 50, minMessage="too short !")
+     */
     protected $body;
 
     public function getName()
@@ -51,5 +68,7 @@ class Enquiry
     {
         $this->body = $body;
     }
+
+
 
 }
