@@ -4,6 +4,10 @@ namespace Blogger\BlogBundle\ViewModels;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
+/**
+ * Class EnquiryViewModel
+ * @package Blogger\BlogBundle\ViewModels
+ */
 class EnquiryViewModel
 {
     /**

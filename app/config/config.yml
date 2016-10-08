@@ -55,7 +55,19 @@ doctrine:
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
-        auto_mapping: true
+        mappings:
+            BloggerBlogBundle:
+                dir: "DomainObject"
+                type: annotation
+                is_bundle: true
+                prefix: Blogger\BlogBundle\DomainObject
+
+
+doctrine_migrations:
+    dir_name: "%kernel.root_dir%/../src/Blogger/BlogBundle/DomainObject/DoctrineMigrations"
+    namespace: Blogger\BlogBundle\DomainObject\Migrations
+    table_name: _migrationsVersions
+    name: Application Migrations
 
 # Swiftmailer Configuration
 swiftmailer:
