@@ -4,6 +4,7 @@ namespace Blogger\BlogBundle\Controller;
 
 use Blogger\BlogBundle\Form\EnquiryType;
 use Blogger\BlogBundle\ViewModels\EnquiryViewModel;
+use Blogger\BlogBundle\ViewModels\IndexBlogViewModel;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -25,7 +26,10 @@ class PageController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('@BloggerBlog/Page/index.html.twig');
+        $blogs = $this->get("blog.service")->getLastBlogPosts();
+
+        return $this->render("@BloggerBlog/Page/index.html.twig",
+            array('blogs' => $blogs));
     }
 
     /**

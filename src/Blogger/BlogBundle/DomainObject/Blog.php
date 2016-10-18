@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints\DateTime;
 /**
  * Class Blog
  * @package Blogger\BlogBundle\DomainObject
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="Blogger\BlogBundle\Repository\BlogRepository")
  * @ORM\Table(name="blog")
  * @ORM\HasLifecycleCallbacks()
  */
@@ -195,7 +195,7 @@ class Blog
     }
 
     /**
-     * @return mixed
+     * @return DateTime
      */
     public function getCreated()
     {
