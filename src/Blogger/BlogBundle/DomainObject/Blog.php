@@ -9,15 +9,23 @@
 namespace Blogger\BlogBundle\DomainObject;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Class Blog
  * @package Blogger\BlogBundle\DomainObject
  * @ORM\Entity()
  * @ORM\Table(name="blog")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Blog
 {
+    public function __construct()
+    {
+        $this->setCreated(new DateTime());
+        $this->setUpdated(new DateTime());
+    }
+
     /**
      * @var
      * @ORM\Id()
@@ -216,6 +224,14 @@ class Blog
     public function setUpdated($updated)
     {
         $this->updated = $updated;
+    }
+
+    /**
+     * @ORM\PreUpdate()
+     */
+    public function setUpdatedValue()
+    {
+        $this->setUpdated(new DateTime());
     }
 
 
