@@ -42,7 +42,7 @@ class IndexBlogViewModel
         $this->blog = $blogModel->getBlog();
     }
 
-    public function getShotBlogPost(){
+    public function getShortBlogPost(){
         if(is_null($this->blog) === false){
 
             return substr($this->blog, 0, 500);

@@ -8,6 +8,7 @@
 
 namespace Blogger\BlogBundle\DomainObject;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints\DateTime;
 
@@ -22,6 +23,7 @@ class Blog
 {
     public function __construct()
     {
+        $this->comments = new ArrayCollection();
         $this->setCreated(new DateTime());
         $this->setUpdated(new DateTime());
     }
@@ -65,6 +67,10 @@ class Blog
     protected $tags;
 
 
+    /**
+     * @var
+     * @ORM\OneToMany(targetEntity="Blogger\BlogBundle\DomainObject\Comment", mappedBy="blog")
+     */
     protected $comments;
 
     /**
