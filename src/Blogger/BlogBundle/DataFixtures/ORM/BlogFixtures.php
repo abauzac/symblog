@@ -10,14 +10,16 @@ namespace Blogger\BlogBundle\DataFixtures\ORM;
 
 
 use Blogger\BlogBundle\DomainObject\Blog;
+use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 // php bin/console doctrine:fixtures:load
 //      --fixtures=/path/to/fixture
 
 
-class BlogFixtures implements FixtureInterface
+class BlogFixtures extends AbstractFixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
@@ -72,6 +74,23 @@ class BlogFixtures implements FixtureInterface
         $manager->persist($blog5);
 
         $manager->flush();
+
+
+        /*
+         * Set the reference entry identified by $name
+         * and referenced to managed $object. If $name
+         * already is set, it throws a
+         * BadMethodCallException exception
+         */
+        $this->addReference('blog-1', $blog1);
+        $this->addReference('blog-2', $blog2);
+        $this->addReference('blog-3', $blog3);
+        $this->addReference('blog-4', $blog4);
+        $this->addReference('blog-5', $blog5);
     }
 
+
+    public function getOrder(){
+        return 1;
+    }
 }

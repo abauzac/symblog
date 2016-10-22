@@ -9,7 +9,6 @@
 namespace Blogger\BlogBundle\DomainObject;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Class Comment
@@ -18,22 +17,15 @@ use Symfony\Component\Validator\Constraints\DateTime;
  * @ORM\Table(name="comment")
  * @ORM\HasLifecycleCallbacks()
  */
-class Comment
+class Comment extends AbstractEntity
 {
     public function __construct()
     {
-        $this->created = new DateTime();
-        $this->updated = new DateTime();
+        $this->created = new \DateTime();
         $this->approved = true;
+        parent::__construct();
     }
 
-    /**
-     * @var
-     * @ORM\Id()
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
 
     /**
      * @var
@@ -66,27 +58,6 @@ class Comment
      */
     protected $created;
 
-    /**
-     * @var
-     * @ORM\Column(type="datetime")
-     */
-    protected $updated;
-
-    /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param mixed $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
 
     /**
      * @return mixed
@@ -167,25 +138,5 @@ class Comment
     {
         $this->created = $created;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getUpdated()
-    {
-        return $this->updated;
-    }
-
-    /**
-     *
-     */
-    public function setUpdated()
-    {
-        $this->updated = new DateTime();
-    }
-
-
-
-
 
 }

@@ -33,6 +33,7 @@ class PageController extends Controller
     }
 
     /**
+     * @param $id
      * @return Response
      * @Route(path="/{id}", name="show", requirements={"id": "\d+"})
      * @Method({"GET"})
@@ -49,8 +50,12 @@ class PageController extends Controller
             throw $this->createNotFoundException("Blog repository not found");
         }
 
+        $comments = $em->getRepository("BloggerBlogBundle:Comment")
+            ->getCommentsForBlog($blog->getId());
 
-        return $this->render('@BloggerBlog/Blog/show.html.twig', array('blog' => $blog));
+        return $this->render('@BloggerBlog/Blog/show.html.twig', array(
+            'blog' => $blog,
+            'comments' => $comments));
     }
 
     /**
