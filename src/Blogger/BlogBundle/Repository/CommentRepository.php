@@ -11,8 +11,9 @@ namespace Blogger\BlogBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
-class CommentRepository extends EntityRepository
+class CommentRepository extends AbstractRepository
 {
+
     public function getCommentsForBlog($blogId, $approved = true)
     {
         $qb = $this->createQueryBuilder("c")

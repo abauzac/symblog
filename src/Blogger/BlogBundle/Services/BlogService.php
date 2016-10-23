@@ -13,7 +13,7 @@ use Blogger\BlogBundle\Repository\BlogRepository;
 use Blogger\BlogBundle\ViewModels\IndexBlogViewModel;
 use Doctrine\ORM\EntityManager;
 
-class BlogServices
+class BlogService
 {
 
     /**

@@ -11,13 +11,13 @@
                 </time>
             </div>
             <header>
-                <h2><a href="{{ path('show', { 'id': blog.id }) }}">{{ blog.title }}</a></h2>
+                <h2><a href="{{ path('blog_show', { 'id': blog.id }) }}">{{ blog.title }}</a></h2>
             </header>
 
             <img src="{{ asset(['images/', blog.image]|join) }}" />
             <div class="snippet">
                 <p>{{ blog.getShortBlogPost() }}</p>
-                <p class="continue"><a href="{{ path('show', { 'id': blog.id }) }}">Continue reading...</a></p>
+                <p class="continue"><a href="{{ path('blog_show', { 'id': blog.id }) }}">Continue reading...</a></p>
             </div>
 
             <footer class="meta">

@@ -7,6 +7,7 @@
  */
 
 namespace Blogger\BlogBundle\DomainObject;
+use Symfony\Component\Validator\Constraints as Assert;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -30,12 +31,14 @@ class Comment extends AbstractEntity
     /**
      * @var
      * @ORM\Column(type="string")
+     * @Assert\NotBlank(message="User must exist")
      */
     protected $user;
 
     /**
      * @var
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="User must exist")
      */
     protected $comment;
 

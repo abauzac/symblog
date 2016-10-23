@@ -35,7 +35,7 @@ class PageController extends Controller
     /**
      * @param $id
      * @return Response
-     * @Route(path="/{id}", name="show", requirements={"id": "\d+"})
+     * @Route(path="/{id}", name="blog_show", requirements={"id": "\d+"})
      * @Method({"GET"})
      */
     public function showAction($id)

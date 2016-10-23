@@ -1,0 +1,12 @@
+{# src/Blogger/BlogBundle/Resources/public/views/Comment/form.html.twig #}
+
+    {{ form_start(form, {'attr' : {'class': 'blogger',
+                            'action': path('comment_create', { 'blog_id' : comment.blog.id } )
+                                    }
+                        }
+    ) }}
+
+        {{ form_widget(form) }}
+
+        <input type="submit" />
+    {{ form_end(form) }}

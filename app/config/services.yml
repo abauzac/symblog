@@ -11,7 +11,17 @@ services:
         factory: ["@doctrine.orm.entity_manager", "getRepository"]
         arguments:
             - Blogger\BlogBundle\DomainObject\Blog
+    comment.repository:
+        class: Blogger\BlogBundle\Repository\CommentRepository
+        factory: ['@doctrine.orm.entity_manager', 'getRepository']
+        arguments:
+            - Blogger\BlogBundle\DomainObject\Comment
+
+# services/handlers
 
     blog.service:
-        class: Blogger\BlogBundle\Services\BlogServices
+        class: Blogger\BlogBundle\Services\BlogService
         arguments: ["@blog.repository"]
+    comment.service:
+        class: Blogger\BlogBundle\Services\CommentService
+        arguments: ['@comment.repository']

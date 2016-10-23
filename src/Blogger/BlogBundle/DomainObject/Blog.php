@@ -240,6 +240,4 @@ class Blog
         $this->setUpdated(new DateTime());
     }
 
-
-
 }
