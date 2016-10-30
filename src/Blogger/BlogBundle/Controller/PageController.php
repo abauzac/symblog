@@ -85,4 +85,15 @@ class PageController extends Controller
         return $this->render("@BloggerBlog/Page/contact.html.twig",
                             array('enquiry_form' => $form->createView()));
     }
+
+
+    public function sidebarAction(){
+        // BAD : don't call repo from controller..
+        $tags = $this->get("blog.repository")->getTags();
+
+        $tagweights = $this->get("blog.repository")->getTagWeights($tags);
+
+        return $this->render("@BloggerBlog/Page/sidebar.html.twig", array("tags" => $tagweights));
+
+    }
 }

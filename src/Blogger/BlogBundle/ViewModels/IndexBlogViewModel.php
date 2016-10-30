@@ -28,6 +28,7 @@ class IndexBlogViewModel
     public $tags;
     public $image;
     public $blog;
+    public $comments;
 
 
     public function __construct(Blog $blogModel)
@@ -40,6 +41,7 @@ class IndexBlogViewModel
         $this->tags = $blogModel->getTags();
         $this->image = $blogModel->getImage();
         $this->blog = $blogModel->getBlog();
+        $this->comments = $blogModel->getComments();
     }
 
     public function getShortBlogPost(){
