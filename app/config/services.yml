@@ -1,7 +1,8 @@
 # Learn more about services, parameters and containers at
 # http://symfony.com/doc/current/book/service_container.html
 parameters:
-#    parameter_name: value
+    bloggerblog.comments.latest_comment_limit: 7
+
 services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
@@ -25,3 +26,9 @@ services:
     comment.service:
         class: Blogger\BlogBundle\Services\CommentService
         arguments: ['@comment.repository']
+
+# twig extension
+    blogger.twig.extension:
+        class: Blogger\BlogBundle\Twig\Extension\BloggerBlogExtension
+        tags:
+            - { name : twig.extension }
